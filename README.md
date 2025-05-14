@@ -160,4 +160,21 @@ private void ResetGame()
         button.Content = "";
     }
 }
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            InitializeGame(); 
+        }
+
+
+        private void SizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            if (int.TryParse(button.Tag.ToString(), out int size))
+            {
+                _boardSize = size;
+                InitializeGame();
+            }
+        }
+    }
+}
 
