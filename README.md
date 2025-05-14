@@ -9,7 +9,7 @@ namespace TicTacToe
     {
         private char currentPlayer = 'X';
         private char[,] board;
-        private int _boardSize = 4; // Default board size
+        private int _boardSize = 4; 
 
         public MainWindow()
         {
@@ -22,7 +22,7 @@ namespace TicTacToe
             board = new char[_boardSize, _boardSize];
             StatusText.Text = $"Ход: {currentPlayer}";
 
-            // Remove existing buttons and create them based on the _boardSize
+            
             GameGrid.Children.Clear();
             GameGrid.Rows = _boardSize;
             GameGrid.Columns = _boardSize;
@@ -42,5 +42,5 @@ namespace TicTacToe
                 }
             }
 
-            ResetGame(); // Reset the game state after creating the buttons
+            ResetGame(); 
         }
