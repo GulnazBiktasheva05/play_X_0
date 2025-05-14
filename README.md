@@ -75,3 +75,89 @@ private void Cell_Click(object sender, RoutedEventArgs e)
      currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
      StatusText.Text = $"Ход: {currentPlayer}";
  }
+ private bool CheckWin(char player)
+{
+   
+    for (int row = 0; row < _boardSize; row++)
+    {
+        bool win = true;
+        for (int col = 0; col < _boardSize; col++)
+        {
+            if (board[row, col] != player)
+            {
+                win = false;
+                break;
+            }
+        }
+        if (win) return true;
+    }
+
+    for (int col = 0; col < _boardSize; col++)
+    {
+        bool win = true;
+        for (int row = 0; row < _boardSize; row++)
+        {
+            if (board[row, col] != player)
+            {
+                win = false;
+                break;
+            }
+        }
+        if (win) return true;
+    }
+
+    bool diag1Win = true;
+    for (int i = 0; i < _boardSize; i++)
+    {
+        if (board[i, i] != player)
+        {
+            diag1Win = false;
+            break;
+        }
+    }
+    if (diag1Win) return true;
+
+    bool diag2Win = true;
+    for (int i = 0; i < _boardSize; i++)
+    {
+        if (board[i, _boardSize - 1 - i] != player)
+        {
+            diag2Win = false;
+            break;
+        }
+    }
+    if (diag2Win) return true;
+
+    return false;
+}
+private bool IsBoardFull()
+{
+    for (int row = 0; row < _boardSize; row++)
+    {
+        for (int col = 0; col < _boardSize; col++)
+        {
+            if (board[row, col] == '\0')
+                return false;
+        }
+    }
+    return true;
+}
+
+private void ResetGame()
+{
+    currentPlayer = 'X';
+    StatusText.Text = $"Ход: {currentPlayer}";
+
+    for (int row = 0; row < _boardSize; row++)
+    {
+        for (int col = 0; col < _boardSize; col++)
+        {
+            board[row, col] = '\0';
+        }
+    }
+    foreach (Button button in GameGrid.Children)
+    {
+        button.Content = "";
+    }
+}
+
