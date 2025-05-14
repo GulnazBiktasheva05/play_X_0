@@ -16,9 +16,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="70" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.RowSpan="3" Grid.Column="1" Background="Beige">
-            <TextBlock Margin="5"/>
-        </Grid>
+        <Grid Grid.RowSpan="3" Grid.Column="1" Background="Beige"/>
         <TextBlock x:Name="StatusText" Grid.Row="0" Text="Ход: X" 
                   FontSize="20" HorizontalAlignment="Center" Margin="10" FontWeight="Bold"/>
 
